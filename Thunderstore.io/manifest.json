@@ -1,0 +1,9 @@
+{
+    "name": "Stack_Further",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/NBKRedSpy/StackFurther",
+    "description": "Allows cards to automatically stack at a further distance.",
+	"dependencies": [
+		"BepInEx-BepInExPack_Stacklands-5.4.2100"
+	]
+}
