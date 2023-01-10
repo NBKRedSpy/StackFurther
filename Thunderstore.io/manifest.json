@@ -1,6 +1,6 @@
 {
     "name": "Stack_Further",
-    "version_number": "1.0.0",
+    "version_number": "1.1.0",
     "website_url": "https://github.com/NBKRedSpy/StackFurther",
     "description": "Allows cards to automatically stack at a further distance.",
 	"dependencies": [

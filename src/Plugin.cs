@@ -1,5 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using BepInEx.Logging;
+using HarmonyLib;
 
 namespace StackFurther
 {
@@ -8,10 +10,13 @@ namespace StackFurther
     {
 
 
+        public static ManualLogSource Log;
+
         public static ConfigEntry<float> StackDistance;
 
         private void Awake()
         {
+            Log = Logger;
 
             //Config.Bind("General", "HighlightVillagers", true, "Highlight idle villagers.");
             StackDistance = Config.Bind("General", nameof(StackDistance), 4f, "The distance to search for a compatible card to stack onto.");
