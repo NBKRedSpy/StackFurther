@@ -25,15 +25,9 @@ namespace StackFurther
             return new CodeMatcher(instructions)            
                 .MatchForward(true,
                     new CodeMatch(x =>
-                        {
-                            bool result = x.opcode == OpCodes.Ldloca_S &&
+                            x.opcode == OpCodes.Ldloca_S &&
                                 x.operand is LocalBuilder localBuilder &&
-                                localBuilder.LocalIndex == 6;
-
-                            if (result) Plugin.Log.LogInfo($"hit");
-
-                            return result;
-                        }
+                                localBuilder.LocalIndex == 6
                         ),
                     new CodeMatch(OpCodes.Call),
                     new CodeMatch(OpCodes.Ldc_R4, 2f),
