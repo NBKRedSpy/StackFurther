@@ -17,5 +17,11 @@ namespace StackFurther
 
 			Harmony.PatchAll();
         }
-    }
+
+		private void OnDestroy()
+		{
+			Harmony.UnpatchSelf();
+		}
+
+	}
 }
