@@ -1,0 +1,8 @@
+{
+    "name": "Stack Further",
+    "id": "StackFurther",
+    "workshopId": 2995935585,
+    "version": "2.0.0-beta+001",
+    "website_url": "https://github.com/NBKRedSpy/StackFurther",
+    "description": "Allows cards to automatically stack at a further distance."
+}

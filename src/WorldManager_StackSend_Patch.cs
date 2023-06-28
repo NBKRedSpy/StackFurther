@@ -35,7 +35,7 @@ namespace StackFurther
                 )
                 .ThrowIfNotMatch("distance not found")
                 .Advance(-1)    //Move back to distance variable
-                .SetInstruction(new CodeInstruction(OpCodes.Ldc_R4, Plugin.StackDistance.Value))
+                .SetInstruction(new CodeInstruction(OpCodes.Ldc_R4, Plugin.StackDistance.GetFloat()))
                 .InstructionEnumeration();
         }
     }
