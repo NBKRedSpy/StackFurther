@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.PerformanceData;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -35,7 +34,7 @@ namespace StackFurther
                 )
                 .ThrowIfNotMatch("distance not found")
                 .Advance(-1)    //Move back to distance variable
-                .SetInstruction(new CodeInstruction(OpCodes.Ldc_R4, Plugin.StackDistance.GetFloat()))
+                .SetInstruction(new CodeInstruction(OpCodes.Ldc_R4, Plugin.StackDistance.Value))
                 .InstructionEnumeration();
         }
     }
