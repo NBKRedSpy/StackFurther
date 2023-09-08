@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net4.6.1</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>StackFurther</AssemblyName>
-    <Description>My first plugin</Description>
-    <Version>1.1.0</Version>
+    <Description>Allows created cards to search further for a stack to join.</Description>
+    <Version>2.0.0-beta+14</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
@@ -13,7 +13,7 @@
     </RestoreAdditionalProjectSources>
     <RootNamespace>StackFurther</RootNamespace>
 	<GameDir Condition="'$(GameDir)' == ''">C:\Steam\steamapps\common\Stacklands\</GameDir>
-	<BepInExDeployDir Condition="'$(BepInExDeployDirCondition)' == ''">%appdata%\r2modmanPlus-local\Stacklands\profiles\Default\BepInEx\plugins</BepInExDeployDir>
+	<ModDeployDir>%localappdata%low\sokpop\Stacklands\Mods</ModDeployDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,33 +21,92 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Reference Include="0Harmony">
+		  <HintPath>$(GameDir)Stacklands_Data\Managed\0Harmony.dll</HintPath>
+		  <Private>False</Private>
+		</Reference>
 		<Reference Include="GameScripts">
 			<HintPath>$(GameDir)Stacklands_Data\Managed\GameScripts.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="ShapesRuntime">
 			<HintPath>$(GameDir)Stacklands_Data\Managed\ShapesRuntime.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
 		  <HintPath>$(GameDir)Stacklands_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+		  <Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
 			<HintPath>$(GameDir)Stacklands_Data\Managed\UnityEngine.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(GameDir)Stacklands_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-		<PackageReference Include="BepInEx.Core" Version="5.*" />
-		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
+
+	<ItemGroup>
+	  <None Update="manifest.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="workshop.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="if NOT &quot;$(BepInExDeployDir)&quot; == &quot;&quot; copy /y &quot;$(ProjectDir)$(OutDir)$(AssemblyName).dll&quot; &quot;$(BepInExDeployDir)&quot;" />
+		<Exec Command="if NOT &quot;$(ModDeployDir)&quot; == &quot;&quot; xcopy /i /y &quot;$(TargetDir)$(TargetFileName)&quot; &quot;$(ModDeployDir)\$(TargetName)\&quot;&#xD;&#xA;if NOT &quot;$(ModDeployDir)&quot; == &quot;&quot; xcopy /i /y &quot;$(TargetDir)manifest.json&quot; &quot;$(ModDeployDir)\$(TargetName)\&quot;&#xD;&#xA;if NOT &quot;$(ModDeployDir)&quot; == &quot;&quot; xcopy /i /y &quot;$(TargetDir)workshop.txt&quot; &quot;$(ModDeployDir)\$(TargetName)\&quot;&#xD;&#xA;if NOT &quot;$(ModDeployDir)&quot; == &quot;&quot; xcopy /i /y &quot;$(ProjectDir)..\media\icon.png&quot; &quot;$(ModDeployDir)\$(TargetName)\&quot;&#xD;&#xA;" />
 	</Target>
+	<ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+	<ItemGroup>
+	  <Reference Update="System">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Core">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Data">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Drawing">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.IO.Compression.FileSystem">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Numerics">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Runtime.Serialization">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Xml">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Update="System.Xml.Linq">
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
 
 </Project>
