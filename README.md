@@ -17,6 +17,9 @@ The distance is the number of grid locations that can be between the card source
 
 # Change Log
 
+## 2.0.3
+* Fixes stack change not including Resource and Coin Chests.  Thanks to Steam user Thels for reporting this bug.
+
 ## 2.0.0
 
 Steam Workshop Support

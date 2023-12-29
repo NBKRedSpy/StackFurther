@@ -7,7 +7,6 @@ For example, if an apple tree produces an apple, it will search for a stack to a
 By default this mod doubles the distance the stack search occurs.  This distance is configurable.
 
 [h1]Settings[/h1]
-
 [table]
 [tr]
 [td]Setting
@@ -32,6 +31,11 @@ By default this mod doubles the distance the stack search occurs.  This distance
 The distance is the number of grid locations that can be between the card source and the target stack.  To see the grid, press E when playing the game.  A very faint grid will be shown as the cards are rearranged to the grid.
 
 [h1]Change Log[/h1]
+
+[h2]2.0.3[/h2]
+[list]
+[*]Fixes stack change not including Resource and Coin Chests.  Thanks to Steam user Thels for reporting this bug.
+[/list]
 
 [h2]2.0.0[/h2]
 
